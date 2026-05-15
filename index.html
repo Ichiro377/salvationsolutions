@@ -827,11 +827,11 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
       <p class="sd" style="margin-bottom:28px;">Let's discuss how Salvation Solutions can help optimize your IT infrastructure and drive business growth.</p>
       <div class="ct-actions">
         <button class="btn-cp" onclick="document.querySelector('.fbox').scrollIntoView({behavior:'smooth'})">Schedule a Call</button>
-        <a href="mailto:salvationsolutions@zohomail.com" class="btn-co" id="email-btn">Send an Email</a>
+        <a href="mailto:your@email.com" class="btn-co" id="email-btn">Send an Email</a>
       </div>
       <div class="ct-items">
         <div class="ct-item"><div class="ct-icon">📞</div><div><div class="ct-lbl">Phone</div><div class="ct-val"><a href="tel:+639173291684">+639173291684</a></div></div></div>
-        <div class="ct-item"><div class="ct-icon">✉️</div><div><div class="ct-lbl">Email</div><div class="ct-val"><a href="mailto:salvationsolutions@zohomail.com" id="email-link">salvationsolutions@zohomail.com</a></div></div></div>
+        <div class="ct-item"><div class="ct-icon">✉️</div><div><div class="ct-lbl">Email</div><div class="ct-val"><a href="mailto:your@email.com" id="email-link">your@email.com</a></div></div></div>
         <div class="ct-item"><div class="ct-icon">📍</div><div><div class="ct-lbl">Location</div><div class="ct-val">Quezon City, Philippines</div></div></div>
       </div>
     </div>
@@ -840,8 +840,8 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
         <div class="ftitle">Schedule a Consultation</div>
         <div class="fsub">Fill out the form and I'll get back to you within 24 hours.</div>
         <div id="form-inner">
-          <!-- ⚠️ SETUP: Replace the value below with your Formspree endpoint -->
-          <!-- Get it free at https://formspree.io → New Form → copy the URL -->
+          <!-- ⚠️ SETUP: Replace YOUR@EMAIL.COM below with your actual email address -->
+          <!-- No sign-up needed! FormSubmit will send you an activation link on first submission -->
           <input type="hidden" id="formspree-endpoint" value="https://formspree.io/f/xzdonayl"/>
           <div class="fr2">
             <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" placeholder="Juan dela Cruz" required/></div>
@@ -926,8 +926,8 @@ async function handleSubmit() {
   if (!n) { showErr('Please enter your full name.'); return; }
   if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { showErr('Please enter a valid email address.'); return; }
   if (!p) { showErr('Please enter your phone number.'); return; }
-  if (ep.includes('YOUR_FORM_ID')) {
-    showErr('⚠️ Please replace YOUR_FORM_ID in the HTML with your actual Formspree endpoint from formspree.io');
+  if (ep.includes('YOUR@EMAIL.COM')) {
+    showErr('⚠️ Please open the HTML file and replace YOUR@EMAIL.COM with your actual email address.');
     return;
   }
 
