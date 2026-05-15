@@ -230,6 +230,7 @@ section { padding: 96px 5vw; }
 .krc { color: #4ade80; font-weight: 700; flex-shrink: 0; }
 
 /* EXPERIENCE */
+#experience { background: var(--white); }
 .exp-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
 .exp-left { position: sticky; top: 90px; }
 .exp-left .sd { margin-bottom: 0; }
@@ -264,6 +265,7 @@ section { padding: 96px 5vw; }
 .ctag:hover { border-color: var(--blue); color: var(--blue); background: var(--sky); }
 
 /* CONTACT */
+#contact { background: var(--white); }
 .ct-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 .ct-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
 .btn-cp {
@@ -361,6 +363,8 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
     <li><a href="#services">Services</a></li>
     <li><a href="#goals">Goals</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -370,6 +374,8 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
   <a href="#services"   onclick="closeMob()">Services</a>
   <a href="#goals"      onclick="closeMob()">Goals</a>
   <a href="#projects"   onclick="closeMob()">Projects</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#contact"    onclick="closeMob()">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -998,7 +1004,26 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
 </section>
 
 <!-- EXPERIENCE -->
-
+<section id="experience">
+  <div class="exp-wrap">
+    <div class="exp-left reveal">
+      <p class="sl">Track Record</p>
+      <h2 class="st">Professional Journey</h2>
+      <p class="sd">15+ years of progressive experience in IT management and operations across diverse industries.</p>
+    </div>
+    <div class="tl reveal">
+      <div class="ti"><div class="td"></div><div class="tr">IT Asset Manager</div><ul class="tb"><li>Managed 1,000+ IT assets</li><li>Designed SharePoint + Power Apps tracking system</li><li>Optimized procurement and cost savings</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">MIS Manager</div><ul class="tb"><li>Led digital transformation initiatives</li><li>Oversaw multi-location MIS operations</li><li>Developed IT policies and SOPs</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Service Delivery Manager</div><ul class="tb"><li>Managed L1/L2 support teams</li><li>Achieved SLA targets</li><li>Developed team capabilities</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Service Delivery Manager</div><ul class="tb"><li>Managed technical support teams</li><li>Improved service delivery maturity</li><li>Led knowledge transfer initiatives</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">IT Manager</div><ul class="tb"><li>Managed IT operations and budgeting</li><li>Administered G-Suite and Fortinet security</li><li>Led data governance initiatives</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">IT Supervisor</div><ul class="tb"><li>Managed POS systems for multiple locations</li><li>Coordinated vendor relationships</li><li>Provided IT support to store operations</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">IT Engineer</div><ul class="tb"><li>Provided infrastructure support</li><li>Managed vendor coordination</li><li>Performed system maintenance</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Jr. System / Network Administrator</div><ul class="tb"><li>Managed servers and data center operations</li><li>Supported 100+ employees</li><li>Installed and configured systems</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Technical Support L3 &amp; L2</div><ul class="tb"><li>Delivered enterprise-level technical support</li><li>Resolved escalated IT issues</li><li>Supported corporate clients</li></ul></div>
+    </div>
+  </div>
+</section>
 
 <!-- COMPETENCIES -->
 <section id="competencies">
@@ -1011,14 +1036,12 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
       <div class="comp-g-title">Technical Expertise</div>
       <div class="comp-tags">
         <span class="ctag">ITIL Framework</span>
-        <span class="ctag">Axelos Framework</span>
         <span class="ctag">Microsoft 365</span>
         <span class="ctag">SharePoint &amp; Power Apps</span>
-        <span class="ctag">Power BI</span>
+        <span class="ctag">Power BI &amp; Tableau</span>
         <span class="ctag">Cloud Platforms</span>
         <span class="ctag">Network Technologies</span>
         <span class="ctag">ISO 27001</span>
-        <span class="ctag">ISO/IEC 42001</span>
         <span class="ctag">Lean Six Sigma</span>
       </div>
     </div>
@@ -1033,14 +1056,73 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
         <span class="ctag">Incident Management</span>
         <span class="ctag">Digital Transformation</span>
         <span class="ctag">IT Governance</span>
-        <span class="ctag">Client Management</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-
+<section id="contact">
+  <div class="ct-layout">
+    <div class="reveal">
+      <p class="sl">Get In Touch</p>
+      <h2 class="st">Ready to Transform Your IT Operations?</h2>
+      <p class="sd" style="margin-bottom:28px;">Let's discuss how Salvation Solutions can help optimize your IT infrastructure and drive business growth.</p>
+      <div class="ct-actions">
+        <button class="btn-cp" onclick="document.querySelector('.fbox').scrollIntoView({behavior:'smooth'})">Schedule a Call</button>
+        <a href="mailto:your@email.com" class="btn-co" id="email-btn">Send an Email</a>
+      </div>
+      <div class="ct-items">
+        <div class="ct-item"><div class="ct-icon">📞</div><div><div class="ct-lbl">Phone</div><div class="ct-val"><a href="tel:+639173291684">+639173291684</a></div></div></div>
+        <div class="ct-item"><div class="ct-icon">📍</div><div><div class="ct-lbl">Location</div><div class="ct-val">Metro Manila, Philippines</div></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="fbox">
+        <div class="ftitle">Schedule a Consultation</div>
+        <div class="fsub">Fill out the form and I'll get back to you within 24 hours.</div>
+        <div id="form-inner">
+          <!-- ⚠️ SETUP: Replace YOUR@EMAIL.COM below with your actual email address -->
+          <!-- No sign-up needed! FormSubmit will send you an activation link on first submission -->
+          <input type="hidden" id="formspree-endpoint" value="https://formsubmit.co/ajax/YOUR@EMAIL.COM"/>
+          <div class="fr2">
+            <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" placeholder="Juan dela Cruz" required/></div>
+            <div class="fg"><label for="fc">Company</label><input type="text" id="fc" placeholder="Your Company"/></div>
+          </div>
+          <div class="fg"><label for="fe">Email Address *</label><input type="email" id="fe" placeholder="juan@company.com" required/></div>
+          <div class="fg"><label for="fp">Phone / WhatsApp *</label><input type="tel" id="fp" placeholder="+63 9XX XXX XXXX" required/></div>
+          <div class="fg">
+            <label for="fs">Service Interest</label>
+            <select id="fs">
+              <option value="" disabled selected>Select a service...</option>
+              <option>IT Asset Management</option>
+              <option>Service Delivery Excellence</option>
+              <option>MIS Strategy &amp; Digital Transformation</option>
+              <option>Food &amp; Beverages IT Solutions</option>
+              <option>General IT Consulting</option>
+            </select>
+          </div>
+          <div class="fg"><label for="fm">Message</label><textarea id="fm" placeholder="Tell me about your IT challenges or goals..."></textarea></div>
+          <!-- error message -->
+          <div id="form-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;color:#b91c1c;"></div>
+          <button class="btn-fs" id="submit-btn" onclick="handleSubmit()">Send Message</button>
+          <p class="fnote">✦ You'll receive a confirmation email after submitting</p>
+        </div>
+        <div class="fok" id="fok">
+          <div style="font-size:36px;margin-bottom:12px">✅</div>
+          <h4>Message Sent!</h4>
+          <p style="margin-bottom:8px">A confirmation has been sent to your email.</p>
+          <p>I'll get back to you within 24 hours on business days.</p>
+          <a href="https://wa.me/639173291684" target="_blank"
+             style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#25d366;color:white;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">
+            <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -1069,7 +1151,59 @@ const ro = new IntersectionObserver((entries) => {
 }, { threshold: 0.07 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
+// Form submit → Formspree
+async function handleSubmit() {
+  const n  = document.getElementById('fn').value.trim();
+  const c  = document.getElementById('fc').value.trim();
+  const e  = document.getElementById('fe').value.trim();
+  const p  = document.getElementById('fp').value.trim();
+  const s  = document.getElementById('fs').value;
+  const m  = document.getElementById('fm').value.trim();
+  const ep = document.getElementById('formspree-endpoint').value;
+  const errBox = document.getElementById('form-error');
+  const btn    = document.getElementById('submit-btn');
 
+  // Basic validation
+  errBox.style.display = 'none';
+  if (!n) { showErr('Please enter your full name.'); return; }
+  if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { showErr('Please enter a valid email address.'); return; }
+  if (!p) { showErr('Please enter your phone number.'); return; }
+  if (ep.includes('YOUR@EMAIL.COM')) {
+    showErr('⚠️ Please open the HTML file and replace YOUR@EMAIL.COM with your actual email address.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(ep, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: n, company: c, email: e, phone: p,
+        service: s || 'Not specified', message: m || '(no message)',
+        _replyto: e,
+        _subject: 'Consultation Request – ' + n
+      })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      document.getElementById('form-inner').style.display = 'none';
+      document.getElementById('fok').classList.add('show');
+    } else {
+      showErr(data.error || 'Submission failed. Please try again or message via WhatsApp.');
+      btn.disabled = false; btn.textContent = 'Send Message';
+    }
+  } catch (err) {
+    showErr('Network error. Please check your connection and try again.');
+    btn.disabled = false; btn.textContent = 'Send Message';
+  }
+
+  function showErr(msg) { errBox.textContent = msg; errBox.style.display = 'block'; errBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+}
+
+// Download placeholder
 
 </script>
 </body>
