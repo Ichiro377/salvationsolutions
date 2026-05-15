@@ -46,12 +46,12 @@ nav {
   background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gray-200);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5vw; height: 70px; transition: box-shadow 0.3s;
+  padding: 0 5vw; height: 68px; transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: var(--sh); }
-.nav-logo { display: flex; align-items: center; gap: 4px; }
-.nav-logo img { height: 50px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
-.nav-logo-text { font-weight: 800; font-size: 18px; color: var(--navy); letter-spacing: -0.02em; font-family: var(--ff); }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { height: 42px; width: auto; object-fit: contain; }
+.nav-logo-text { font-weight: 700; font-size: 17px; color: var(--navy); }
 .nav-links { display: flex; gap: 30px; list-style: none; }
 .nav-links a {
   font-size: 14px; font-weight: 500; color: var(--gray-600);
@@ -190,16 +190,18 @@ section { padding: 96px 5vw; }
 #goals { background: var(--white); }
 .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .gc {
+  display: flex; gap: 16px; align-items: flex-start;
   background: var(--gray-50); border: 1px solid var(--gray-200);
-  border-radius: var(--r); overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s var(--ease);
-  display: flex; flex-direction: column;
+  border-radius: var(--r); padding: 26px 22px;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.gc:hover { border-color: var(--blue-lt); box-shadow: var(--shl); transform: translateY(-4px); }
-.gc-infographic { width: 100%; flex-shrink: 0; display: block; }
-.gc-body { padding: 18px 20px 20px; }
-.gc-body h3 { font-size: 15.5px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-.gc-body p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+.gc:hover { border-color: var(--blue-lt); box-shadow: 0 2px 12px rgba(15,37,69,0.07); }
+.gc-icon {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: var(--sky-deep); display: grid; place-items: center; font-size: 19px;
+}
+.gc h3 { font-size: 15.5px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+.gc p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
 .gc.full { grid-column: 1 / -1; }
 
 /* PROJECTS */
@@ -230,6 +232,7 @@ section { padding: 96px 5vw; }
 .krc { color: #4ade80; font-weight: 700; flex-shrink: 0; }
 
 /* EXPERIENCE */
+#experience { background: var(--white); }
 .exp-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
 .exp-left { position: sticky; top: 90px; }
 .exp-left .sd { margin-bottom: 0; }
@@ -264,6 +267,7 @@ section { padding: 96px 5vw; }
 .ctag:hover { border-color: var(--blue); color: var(--blue); background: var(--sky); }
 
 /* CONTACT */
+#contact { background: var(--white); }
 .ct-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 .ct-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
 .btn-cp {
@@ -314,17 +318,6 @@ section { padding: 96px 5vw; }
 .fok h4 { color: var(--green); font-size: 18px; margin-bottom: 6px; }
 .fok p { font-size: 14px; color: var(--gray-600); }
 
-
-#clients { background: var(--gray-50); }
-.clients-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-.client-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 14px; padding: 28px 24px; text-align: center; transition: box-shadow 0.3s, transform 0.3s; }
-.client-card:hover { box-shadow: var(--sh); transform: translateY(-4px); }
-.client-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-.client-industry { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); }
-.client-icon { font-size: 32px; margin-bottom: 12px; }
-@media(max-width:768px){ .clients-grid { grid-template-columns: 1fr 1fr; } }
-@media(max-width:480px){ .clients-grid { grid-template-columns: 1fr; } }
-
 /* FOOTER */
 footer {
   background: var(--navy); padding: 26px 5vw;
@@ -365,15 +358,28 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
 <!-- NAV -->
 <nav id="main-nav">
   <a href="#hero" class="nav-logo">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAfO0lEQVR42u2deXwV1d3/32dm7po9IZCEEAIqOwIqyOKCCCKIG1ZcUFuRisvjAmottc/jgkJr1VqXarWlVZHWBRRFRAFBxUcRZRMwEDBmgezbTW7uNjPn98fce0kQEHy03P6Y7+t1Xq/cm7lzzpzP+e7fc0ZIKSU2/X9Lij0FNsA22QDbZANskw2wTTbANtkA22QDbANskw2wTTbANtkA22QDbJMNsE02wDbANtkA22QD/IPIlBIpJVKCaf70BSYSMKKFLIaUyCMaK5j73SORSRztkh0pQYijPxGGlAjEQcEWgESiJsJgj4C0RAC36JtG5i/aga81zEVjCzn39IKfBPgYeD7dYE55Fetb2zg52cv9BTmkqOrh8ANftPiZV1FDk2FwTXYGP++ShYwuABvgA4Bb3xTkN499jm5IstJdPPD0l6QmOxk5JAfTlCiK+FH7VAT8unQvz1bVk+3Q+MjnpyGic0teNmb0/wdaGALwGybX7y6nNBTBoyh87Ksg26ExMTMNQyYmdx81gM3ohGz8upaahgALHh5DYX4ql81cwYpPKhg5JOdH515FQMg0+ajZTxenAwdQ6HayuMHHi7WNUTF8aOrsdNDFoSGEIGiavNfUwsTMNKTNwQcmj0vDNKGsshWnU6UtoJPk0TqI1B/F2MAyjhxCYXCSh6VNPhyqQmVYZ0Syl190yfxeDm41DB4sr8FnmiSrCg4hGJLkid/fBri9+a4IpIST+mdzUr8s7n5kHSnJTgQw6azuP4lek1GpkefUCJsSpyYYkezlL8fn08vjPqx7pKgK8ypqaNAN0jWF8Rmp1lgT1Pg6qlZ0TA83t4Z4Z3UZFdWtvLe2gjunnciEM7r/qDo4xp3b2wKcsnknF2em84ceeeQ4NBQh0A9zGjQh8Bsm7zX6mLLjW+7O78xD3fMSVgeLRNvZcPvcTyjb28pLfxiD1+2wBvkjzFsMgEuKSljR1MKmwb3p6XZZPq2UIEE5SEftvzYkqNHPV+74ljcbmtkwqDd9vO6DivhjPtAhJUR0EylhxmV9qaxt440VJQhhGWM/FrjLG5tZXNfEXV0709PtQpcSAahCoCoCIThgi+IPWODGgiMPFOSgIvifssqorpY2Bx9SjEZF8gNPf8H/bqxm4aNnk5HqBuQP1nEy2sKmyagtxfgMky8H9SJZU0FKFCGoawzw1IKv2FXmQxH7gh0C0HWT3905nIK8lA6+eWzR3FdWyf1lVbzX/zjOyUhNOFGdWLHo6Lz8YnJvAkGDhW8Xxzno/+KOKcDfquvZ0NLGnIIcUjXVkgwSDFMyc+4nPP9qEV9uq2Pdlho+31LDhm21rPjfPXTK9JCV4Wbm3LXohhnnZkUITGBmXjY9PS7uKaskZJoIIRKKjxMKYEUITFNSkJvC5HMKef29EiqqWwHQDfOIpYFuWCK4KhxhTnk1YzJSmNIpHRMQpmXJv7HiG9Z+WUV+ThJet0ay10GK14HLqZGb7WHurGEsfLuYv71exOL3v7HURvS+UkrSNI0HuuXwha+N+dUNKEAkgcyahMsmxTh26vkn4HQozH+9CEURaKpy2JwsJdHfCBQhmFdeTW1EZ2733PgiUhRobgnx1IKtJCc5iOgmpikxTRmPsN10ZX/CEZOnFmyle9dUnnp5Kw3NwaiLZ4l3U8Ll2RmMTk/h/vIq6iI6zigXSxvgAwFsTV6nDA/XXNSLNZ9X8sqyXWwrbkAIi5N1Q2IcoOmGRDdMhIBNO+pY80kFK/Y28kx9A9M6Z3JqSlI0qWD187fXv2ZPlR+vx4ESNbQ0TSEYNjiheyrTL+3Hg898SWtbhCSPxp4qP8/8c1t8EbZPQDzUPQefbvDr0r185vMTMc3Diowdc25STLwKISjd4+O/5nxCMGxgGCa3Xj2Ai8f1/N7fL3pvN0++vA0nAj3LScXFebx/am+6O50YUqIpgs1FdVx00/Lv+NlCCFr8YV770zlkpLq46OblpKe64mlM3TB59fFz6HtcRtwojAVlJmzbzYc+Pw4hGJHi5eVe3cl0aEc10qWRgBSLG3/8ZRX+gE5WuptASOdf7+ymuSX03elqxyoSybsfVZDsceB2aTTVBrmhRqXQ5cQwZVxklVT4OH9MISlJDgxzH1eHwgZ9eqYzYkgOV8xagdOxL8ukqgJfq87fFxfx8F0jkDEjTgg2+wNs8gfJdKhoQvB+Uyvzq+u5K78LupRoR8myTkiAY3pUU4XFYVLidCjUNYW476kvMc39gx8WD0kJqgLHdU8nJckBUmJqgq5uR1x/xzh21Mm5jDop9zv96oZJbnYStQ0Bdpf5cLvUOPdKCQ5Noaq2LWoUWvFtgPqITrNh0EnRUBC4FUFVRD92Y9GHY2z5WsMEgjqqIgiGdKZecDxnD88/aMQo9v3KTyt4+e1duF0apmGSm5NkLQgJhiFRVcHS1d9y35NfkJXujlvbQlgBl7zOSSx5ZgJTJhzHc69+Tad0F7ohrWxUxOSMoblRVQKKaonoEalJDE32sKktiC4lHkUwpVP6UTd0Ek4Hx/Tv3ppWxl27lJP6Z3Ph2YVkZ7oZPazrYd/no/V7Kats5YkXv+KEwjQW/OHsaKDCWhnhiMHPbn0vyqVavGRI0wTVdQFuvLIfd00bzOlTl9AW1HFqCoGQQUFeEoufPBe3S4urBwk06zqnb9kFAsalp3BpVhojU5OPejGAkqjc+/gLW2jxR5g9YwiXnnsco4d1teqgTHnQFnNzAM4YmsdVF/Tiup/1YflH5Sz7sBRFEfH6L5dTZda1g4joJoqyr1/TlHTO8vDiGzuprGvjrusG0dwSRtMUQmGd239+Ih63hillPJSqAL+vqGGbP8BTPbvyxx5dEwLchAM4ZpV+ua2GBW8Vc93P+tD/+EwiEctHtXSsOGhTFIGIyu6Y2/Tzi3szuF8Wv3t+E/62SDS+bPnCZ53albEjuuJrjaBGMwgx98c0Jfc/+QWXjD+OU/p3Ym+Nn7NO7cr40wowTYmqWD6wKgRftwV4orKWq7pkMjothbCUGDIxcsQJx8GmKZn3l410zvLwX1cNsEDVLOAUAW26SaXfoLqtY6v0Gx0mVVWt5IHbpTH7+iF8vbuR+YuLosGJfVpp1rWDcGgCXZdoqoIaXSAZaS7WrN/LpxuruPeWoQDcMW3Qfta+dZ//LqtCQ3BftxwkoCHiGSc72RAlI8oVb6z4hun3rOGPvxnFNRf1xjBkHNzXdgd4dmuAUNStiVmyfl0yMFPj2TNT8UckGW417j3FpMK02R/wyYZqVv7jfPJzkok9tqII/r7oa+Y9txHT3AddzGUqyE3m7WcnsLW4gdNPyds33mhS4b1GH+du2839Bbn8T0FOwiUbEgJgawSSFn+E8dOWkp7qZMkzE6zwpLDE4Ob6CFeuaMalCjRlXwJCFdAUNnntnHSq2kz+XtTGwnEZcYs6BnDRN42Mn7aUyeN78sfZo+Lfx/zYr3c3sKvU1y7wYYEcjpiMOimH7ExP/NpYGDJimozcUozPMPhiUG9SNNWyxhNIIiaEm2QYJpqm8Nyr2ykubWbxU+NxOlSLe6Ohy8c3+1EFeFTQo+BZ4EouKHQxMEvjN+ua2Nags7wsyLkFbis5rwgMU9KnZwbTp/TlqQVbueK84xl2Yhd03epXSknf4zLpe1zm99oHVupR4lIEf41mqBb26U6apmJEF0BCJXASQedqmkJJhY9nFm7jyvNP4IyheZY1HBXN75SG+KxaJ9kh0OW+0IYuwa3Cr4ck80JRgJ3NBp3cCk9+1YY/YqK0i4pJCTddOYCCvBQefGZDvF8zmuQ1TBmPc3dspmUxtwtJuhRBTTjCA+XVjE5P4bJOMYmReCU7ytEVzRZXbNhey/1PfUGnDA8TzyzoELQI6JK/bG8j2WEZTWq0uVRoDJn8sp8HhwJ/3hYgzSFwqLDbZ/LijkDUjYlazVKSle7mFxf3orI2wO1zP2Hj17UoQlhVHdGMlaaK/ZoSv0YAZcEwd3+7lyk7viViSh4uzI2KbZmQlZXK0QPXmvi6xgAP/nkDlbVBcrKTeOHNnTQ0By0rGHhscyuf1+j4Iya1AZO6oEl90KSs1aQwReWG/l4e3uTHF5ZoCugmpDoFL+0MUtaqWyU2UQOurjHAZ5tryeucxPbdTTz0zEbK69toMQxadINWw2ot0bb/58pwhMt2fMsje2vZFgjhUpR4qFIkaOGsdjS5VwhB8bfN+PwRUpOdmKakpt6KAQ8d6MY0JWfkuTgl29khNCmAsAknZ2tsbdBZUhIi3SUwouJbE9AQkiwrDXFDf83SxcDuch97qvykpjhJSXagt+mM+WAbLb2SUUPmQa2jmGiOVV7mOx0IoDqi82pdE6emJGEiUbB3NnSIVgHk5yTj0BT0aMLd5VTJ65zUcXrbm6bx8JA8aLWlOMjn/C5JeDxWuY4RttTDxJ5ZhNKcKDrfC3DINHmr0UdYShzRnQ35TgeJTEcRYEsvdstN5sYr+vLES9twu1Ruu3oAXbskoZtW3vbDPWGe3Bogy7XPwLImG3qnqbx3fgYXFrp4/ZsQGVEujkjIdAkmdndZrpRiRa66dknm+il9+dOLW0n2Orj+sj5MOrnwiMb9UHkVf9hTh9Qkl2SlcW1081mi7jo8qkaWErVeLxjTg+GDstle3EBBXkrUQbeuuWNwMkM7ayQ5FLI9Cp3cClluhYJkhZIWg79sa+NXQ5JIdVj6V1PAF5Zc3ctNQbIlnhWxr7KiriHA17sbuHlqPyaNLiRiSAz5/U2XEl3CPd1yuE7Lw1mSyYNd8knXVMuQS1AOPupuUixgf8vVA/G4Ve790/p4XZRhgkcTzOjnpTVixaKNaAsZkOFSeH57AF1KbhjgpTkiiRhwXKrCNb098d2Epmn5p+VVrfzu+U2cMyqf8acVYBgShyqsuuhoU0THz7GmCYGClf+9s08amYaLRza1Jaz1nDAAK8JK1HfJ8nLHtEGs+nQPS9d8G0/0mxLO6+5meBeN1ohEazebqoA2A363wc+1fTz0SlOpD5rcMtBLksOycEW7hfTHv28mFDaYPeOkDnbAofR3+9BkrBYrN1nlxhPdLCsLsbI8hCKIG3g2wAcB2ZSSqef34uQBnfj985to9YdRlKivLOC2E5MwJASNdoEOE1Idgre+DbG1QeeWgV6GddY4t8AdzfRYLpKiCD7fUs3CpbuYfmlf+vTMiH8fu1cMxPaf94VRLR0r2gVNru7loX+mxiOb2gjoMiEK7P4jkg2r11Uw5bYV3HPjSdz+80FWvZSwIlqv7Arw7LY2wkb7xQF+HQZlqQdNNkgpufS29ympaGHlPyaRmeah/W4JS8wKljY089vSKjIdatwlim07PSs1md9064JTscp3VQHvlwf5xQc+HhiaxPR+SR32LdkAHyLe+8vfrmHN53tZ+Y/zKchNwTBMRDTn2xoxaQrJ75TsSCDHq8YnWEor1OjQFF5fvpvr/+dDnvztKKZe0Du+mMzoVpSNrW08sbeW508oYNjmnewIhPCqCrHzYBRh1Vz9Kq8zv++RFz/PQwi47oMmNtTpvDspgy4eNWpR2yL6kHTX9MFEdJNH529CCNA0JZ40SHYo5Cer5CV1bF2TLHBluyiZQ1PwtYZ5+K+bGDG4C1MmnhA3uPZxLvxxby0vVDewvsXPMz3zEUCSouBVBF5F4BaCfJeTv9bUs6m1DVWIeH31HYOTaIlIntjijydATGkDfODBREHsVZjO9VP68uq73/D+2jI2bK/lm/JmVEUcIBmwrxmmtLaVCNhd1syX22r504tb+HZPC7NnnIRDU6Kbtfflc1c0+XirwUe2y8HtJXsZnprEhZmp1OuG5auzr3IyIuH+8qqob20ZVv0zHfy8t5tF34R4tyzInlYjobaQJlzRnTUcQUNzkEtvex9FCBwOFcMwuXPaIM45rdv33mP5x2U89vctaKpCU0uIkUO68MjdIzuk/MDK5569dTdbAyHSVIW9kQhP9+jKeRmpDNy0A6+qdjCeNAENEYOXexUwKTONSLTeea9f52fLmwkaElXAFSe4mTU42QrCHWWwE65sVkSDH1npbi6beDyvvvsNSR4H/rYILy7ZidOpxI2j9tHL2B9SSl5aUoyqKng9DkIRkxFDunTYKxQ7AGZ+dQNf+ANkOzQiUpKpacwpr2Zqdga35WZzb2klSQ4tbl0LICglt36zh1NTkshyaAjgq3odvy5JiaYzn/86wOl5ToZ1dh71TeEJXfju0BQr6Y/E49HYW9PGlXes4qBCJ7rprE/PDNJSXYDEMEwam8MdFoMqBG2GyfPV9SSpVk5YAk4hqIvo/La0inmFuUgkLYYZDUNGS3wQtBoGe0JhOkW3pXzbYtCmQ6oTXIqVWdrrN7/jctkAtwtKCAGnn5LD4vdLqGsKoRsmk0YXcM+MwZb1ewDrQZoWt3y+tZZlH5ajqQopSQ7OOjXvO4GNgGnSZBho7U63M6XEqQg2twVwKQq35WXToBsWwO1qYA0pSVNVotqEcfkuFhYH8UegNSLJ9QqGd3FYxQa2Dj44BwsBO0qaWPlpBQW5yZx/VuFh/lby9upSKqpaGTcynxMK0zvszo/VVl2zs5TFDc1kaFrc6KqL6LzbrwcuoTB++24cQiFWPymiqyRsmqwZcDwnJ3sxgYagwcXvNuHVBMM6O5jay02fDEdC1EWLRH697IGOMzRMyUFlX/RadT+lt/99YnqxqC3I6K27UKKx5kbdYGJ6Cq/0KWTE5p1sD4ZIVdV4ma0WXQA35GTxaI+u8U1l//15Cwt2BllybhondnLGh2fXRR9mIsKIukAx8FRFoKoHaNH/xRaCYcj4DoSOoVFLzPbxurm+SxZNuoGIWsmP9MhjfnU9X/oDpKtqh9Nog1KS69T4VdfOmNIC/Kv6CC/vDHJ1LzcndnISMUmo7FLCnxetiH3gHQnFFsHBCuHiZ2x0zeZ4t5M94Qi35nYi26HxQHk1GQ6tw9lZmhD4dINZedl0cTowsbJbj2zyk+4S3DzAG49iKXYkKwGkQ1RXZ2gat+Vmk6kq3F+Qy/1lVdTpOl5lX+rQKQQNusFgr5vrumTFRfO7ZUFWVIS5ZYCXLl41Ic/JEsfqK95lOyXZohvsCASRwMgtu6w4NPt8Xwl01jQW9urO8NRoVks3ueDdJpwKvDEhA2fsnK0Ee07tWAM2ZkHHdwYKQaqmMjQlie1tAV7p3T1aLSk7iLlhyV46Ox2EDIlLFbywI0BRo85LY9Nwq1apUCKKw2OKg9tb04Ggjse971TbI/FZ9/oNxr3dyKgcB8+NTktI0XzMcXCsTHfj9lqeeGkrdY1Bxo7syg1X9EeL7ikyohy+v5yVEpyKoClksmZPmLdLgzgVuHOwN+GfWzt2OFfQ5AvxwNMb8Lg1hg7MZuHS3XTOcHPF+b32Wd8HqeNpDptc+0Ez2xt1HIqgV7pK9xQtnp2yAU4A7i0ubaa6PsD8uWfSp2cGrS0hXlizl9XpuZj6gU/Si+1tagialLQYdPJY5e1FTQZr9oYY382dkJUcx6SRlZnuQlUFH62vJBg2KNvTipqRSoXfQEaMg7KiQBI09m0uE4BuJnY15TFnZMmohfXEi1tYuHQ3ioCcTh5+/6vh9OqedtC3vMS8qbqAyfUf+tjaoCOB03IcPH1GGh6tY+rSBjgBaN3maqrrAwwf3JnOmYdvKDWHTVaUh3AognO6ufBoIqFfqXNMBzoO5Dod8roDAJno4B6TgQ4gfmKPohz+yzRiEa32lZa2DrbpqJP99lEbYJv+k+kn08GmaXYojlMU5aD6zjCMQ/7/UMGL9n2ph/WCye8fqxACRVEOee2h+mo/NsOw9tn80LH9R+rgWJffB2hsovaf/B96/wN93x6MQ/X9Y73Z7HDHdqTP/G8HeNOmTZSUlGAYBtnZ2QwbNgyPx9NhQqWUtLW18dprrzFq1ChOOOGE70z4/p9N00RRFAzDiHPahx9+SFFREdOmTUPTtO9M0oEmMwaeEIKKigo2b95MIBDA6/UyaNAgunbtimEYcc6T0UNMN2zYwM6dO7n88ssPyOVSSgzDQNMs4bhw4UK8Xi8XXnhh9FQhJf4cQogO4zjSRXi4K+pHI13XpZRSLlq0SPbt21eeddZZcsyYMbKwsFBeffXV8et8Pp/0+XxSSimrq6tlYWGhfOWVV2QkEonfQ0opI5GIlFJKwzBkU1OTDIVCUkopm5qa5EUXXSRXrlwppZTyn//8p5w5c2b8er/fL1tbW79zH9M0ZVtbW/xvKaUsKyuTZ555phw2bJgcO3asHDhwoBw0aJDcsWOHlFLKYDAofT5ffFxz586VQ4YMkeFwWOq6Lg3DkFJKGQ6HpWmacv369fK8886TlZWVUkop58yZIx9//PH4WFpbW2UgEPjO2EKhkAyHw/HvA4GAbGxsjI/zh9JPooO3bNlCMBjkwQcfZPjw4Tz77LOsX7+eXbt2MWfOHGpqagAYMGAAN998M506dSI9PZ1HHnmE8vJynn76aZYtW8ZLL73E2LFjee2113C5XAQCAWbNmkV5eTlFRUXMnj2b6dOnk5ubSzAYJBgM8tBDD7Fu3TqEEHTr1o158+bx1FNPsWfPHgKBAJWVldx9992cd955AFRUVLBz505mzpzJLbfcwpYtW5g3bx4NDQ0sWLCA+fPno2kaDoeDOXPmkJWVRWZmJpFIhOnTpzNp0iQuv/xyJk+ezIwZM1i1ahWlpaVccsklzJ07F6fTqrKsrKzkzjvvpKqqCiklZ555JjfeeCOzZs0iJSWFkpISNE3jiSeeYOXKlSxZsgSPx0NjYyMzZ85k0qRJcel11KzomBiZPHkyAwYM4LbbbuOCCy6gtraWe++9F1VViUQi3HnnnUydOpWlS5dSUlKCoigoikKPHj1YvXo14XCYFStW4HQ6EULQq1cv5syZQ1JSEosWLeLEE0/E6XQyfvx4RowYQVFRETt27GD9+vX861//Yvr06cyZM4e1a9eyfPlyGhoaKCsrY8aMGSiKwgcffBAXkwMHDuSyyy7j1VdfZeLEibzwwgvMmjWLAQMG8Oijj3LyySfz8MMP09bWxgsvvIBpmhiGgWEYlJSUUF9fj67rFBcXEw6HGTJkCKqqcs0113Dcccfx+eefU1FRwTvvvMP69euZN28eV111FQsWLGDjxo2UlpaiaRozZ86kuLiYL774giVLlhAOh7npppvo379/nCGOupsUW13p6encc889PPfcc1x++eV88MEH3HrrrdTV1eF2u5k/fz5vvfUW2dnZcb3kcDgYPXo0iqLwySefsGPHDsaNG0dycjJlZWU89thjNDQ04PV66dOnD1JKzjvvPAYOHGi9oCotDZ/PR3JyMueeey4jR44kLy+P5uZmpJQMHjyYMWPGkJubGx+nlJJIJMLUqVN57rnnuOOOOwiFQtx0000sW7YMj8fD8OHDGTx4MP3796elpQVd13G5XHi9XtxuN6mpqTidTtxuNx6Phz59+mAYBjNmzCA/Px9FUfB4PDQ1NdGtWzeGDRvGOeecg9frpbW1FYfDwbhx4xg/fjxJSUm43W7uu+8+CgsLefbZZ2lqaqJ3796JAXDMJXjssce48sor2bZtG9nZ2eTm5tLQ0MCaNWtYuXIlEyZMYMiQIdTX12MYBrqus2jRIjIyMigsLOTRRx+lsbGRkSNHsmDBAvx+P5dccgmqqtLa2kokEsE0Tf785z+zcuVKVFWlubmZjIwMWltbWbx4Me+//z4VFRVkZWURDAZpaWnBMAxaWloIBoNx12XdunVMmDCBxYsXo2kaxx9/PD6fj5aWFtxuN6tWrWLt2rVs2rSJtLQ0NE2juLiYVatW4XA4+Oyzz3j55ZfjnByJRGhpaWH27Nls2bIFRVEIBAJkZWVRWlrK6tWrefPNN2lrayMtLY2WlhZaWloIhUIEg0Fqamp48803GTp0KDfeeCNbt27l8ccf/8GYqPfdd999P7aY7tGjB9XV1axevZq1a9cCcM011zB27FiKiorYvXs3Xq+XpKQkJk6cSDgcpqysjMmTJxMMBikqKmLo0KFMmTKF5uZmiouLaWpqIiMjg65duzJ+/HjC4TCbNm0iMzOTbt26UVtby3XXXUcoFGL58uV8+umnDBs2jF/+8pds27aN3NxcTj/9dDZs2EB+fj4jR47ENE3y8qx9S+vWrWPNmjVUVFQwevRoZsyYQUZGBh9//DEfffQRWVlZ3H777eTn57Nx40Z69uxJnz59WLVqFbqu07lzZ0455RROOukkampq2LBhAwMGDMA0TVJTU5kyZQolJSUsW7aMnTt3MmXKFCZNmsSnn37KaaedRs+ePfn44485++yzCQaDvPHGG3z11VdkZGRwxRVX0K9fvx9kTf+kfvDBggLhcDhufBwOhUIhXC7XEfVrmmbcVTkSCXSggEskEsHhOPCJdrquH1E/uq7HbY4f+7n/bQDHfMb2D9He79vfF21/7f4+6v4+Yvvo1f6TtP+99u/zSMe6/7ja97//GNt/t//9DuTfHmps+z/bD7Ge/y0c/H2Bhh8SlvwxI2WH28+h+v8px/Z/CnDY6UI7m2STDbBNNsA22QDbZANskw2wTTbANsA22QDbZANskw2wTTbANtkA22QDbANskw2wTTbANtkA22QDbJMNsE02wDbZANsA22QDbJMNsE02wDb9tPT/AGkpv14KQPrBAAAAAElFTkSuQmCC" alt="Salvation Solutions logo" style="height:50px;width:auto;object-fit:contain;"/>
+    <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lg-logo" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e56b0"/><stop offset="100%" stop-color="#0f2545"/></linearGradient>
+        <linearGradient id="lg-cross" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5c842"/><stop offset="100%" stop-color="#d4940a"/></linearGradient>
+      </defs>
+      <path d="M21 3 L37 10 L37 22 C37 31 30 38 21 41 C12 38 5 31 5 22 L5 10 Z" fill="url(#lg-logo)"/>
+      <path d="M21 7 L33 13 L33 22 C33 29 27.5 35 21 38 C14.5 35 9 29 9 22 L9 13 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+      <rect x="19" y="13" width="4" height="16" rx="2" fill="url(#lg-cross)"/>
+      <rect x="13" y="19" width="16" height="4" rx="2" fill="url(#lg-cross)"/>
+      <circle cx="21" cy="13" r="2.5" fill="#f5c842"/>
+      <circle cx="21" cy="29" r="2.5" fill="#f5c842"/>
+      <circle cx="13" cy="21" r="2.5" fill="#f5c842"/>
+      <circle cx="29" cy="21" r="2.5" fill="#f5c842"/>
+    </svg>
     <span class="nav-logo-text">Salvation Solutions</span>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#goals">Goals</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#clients">Clients</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -383,7 +389,8 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
   <a href="#services"   onclick="closeMob()">Services</a>
   <a href="#goals"      onclick="closeMob()">Goals</a>
   <a href="#projects"   onclick="closeMob()">Projects</a>
-  <a href="#clients"    onclick="closeMob()">Clients</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#contact"    onclick="closeMob()">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -395,10 +402,11 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
   <div class="hero-in">
     <div class="h-pill">Strategic IT Solutions</div>
     <h1 class="h-h1">Salvation Solutions</h1>
-    <p class="h-sub">Empowering Every Business — Enterprise to SME — Through Strategic IT Excellence</p>
+    <p class="h-sub">Enterprise IT Consulting &amp; Operations</p>
     <p class="h-desc">With 15+ years of experience in IT Asset Management, Service Delivery, and IT Operations, I help businesses achieve operational excellence and strategic technology alignment.</p>
     <div class="h-btns">
       <button class="btn-p" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule Consultation</button>
+      <a href="#" class="btn-o" id="dl-profile">Download Profile</a>
     </div>
     <div class="h-strip">
       <a href="tel:+639173291684" class="h-strip-item">
@@ -411,7 +419,7 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
       </a>
       <span class="h-strip-item">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Metro Manila, Philippines
+        Quezon City, Philippines
       </span>
     </div>
     <div class="h-stats">
@@ -681,270 +689,11 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
     <p class="sd">Committed to delivering strategic IT solutions that drive business success</p>
   </div>
   <div class="goals-grid">
-
-    <!-- Goal 1: Digital Transformation -->
-    <div class="gc reveal">
-      <svg class="gc-infographic" viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" height="140">
-        <defs>
-          <linearGradient id="g1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f2545"/><stop offset="100%" stop-color="#1e56b0"/></linearGradient>
-          <linearGradient id="g1bar" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#2d6ed6" stop-opacity="0.3"/><stop offset="100%" stop-color="#2d6ed6"/></linearGradient>
-          <linearGradient id="g1bar2" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#f5c842" stop-opacity="0.3"/><stop offset="100%" stop-color="#f5c842"/></linearGradient>
-        </defs>
-        <rect width="340" height="140" fill="url(#g1bg)"/>
-        <pattern id="g1dot" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.06)"/></pattern>
-        <rect width="340" height="140" fill="url(#g1dot)"/>
-        <!-- title -->
-        <text x="20" y="24" font-family="Outfit,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.4)" letter-spacing="1.5">DIGITAL MATURITY ROADMAP</text>
-        <!-- phase labels -->
-        <text x="38"  y="110" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle">Legacy</text>
-        <text x="96"  y="110" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle">Connect</text>
-        <text x="154" y="110" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle">Automate</text>
-        <text x="212" y="110" font-family="Outfit,sans-serif" font-size="8" fill="#f5c842"               text-anchor="middle">Optimize</text>
-        <text x="270" y="110" font-family="Outfit,sans-serif" font-size="8" fill="#4ade80"               text-anchor="middle">Transform</text>
-        <!-- bars -->
-        <rect x="20"  y="74" width="36" height="30" rx="4" fill="url(#g1bar)" opacity="0.5"/>
-        <rect x="78"  y="58" width="36" height="46" rx="4" fill="url(#g1bar)" opacity="0.65"/>
-        <rect x="136" y="46" width="36" height="58" rx="4" fill="url(#g1bar)" opacity="0.8"/>
-        <rect x="194" y="34" width="36" height="70" rx="4" fill="url(#g1bar2)" opacity="0.9"/>
-        <rect x="252" y="20" width="36" height="84" rx="4" fill="url(#g1bar2)"/>
-        <!-- trend line -->
-        <polyline points="38,72 96,56 154,44 212,32 270,18" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-dasharray="5 3"/>
-        <circle cx="270" cy="18" r="4" fill="#4ade80"/>
-        <!-- % labels -->
-        <text x="38"  y="71" font-family="Outfit,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.4)" text-anchor="middle">20%</text>
-        <text x="96"  y="55" font-family="Outfit,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.5)" text-anchor="middle">40%</text>
-        <text x="154" y="43" font-family="Outfit,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.6)" text-anchor="middle">60%</text>
-        <text x="212" y="31" font-family="Outfit,sans-serif" font-size="7.5" fill="#f5c842"               text-anchor="middle">80%</text>
-        <text x="270" y="15" font-family="Outfit,sans-serif" font-size="8"   fill="#4ade80"               text-anchor="middle" font-weight="700">95%</text>
-        <!-- badge -->
-        <rect x="260" y="115" width="64" height="18" rx="9" fill="rgba(74,222,128,0.15)" stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
-        <text x="292" y="127" font-family="Outfit,sans-serif" font-size="8" fill="#4ade80" text-anchor="middle" font-weight="700">AI Enabled ✦</text>
-      </svg>
-      <div class="gc-body">
-        <h3>Drive Digital Transformation</h3>
-        <p>Enable organizations to modernize their IT infrastructure and adopt emerging technologies for competitive advantage.</p>
-      </div>
-    </div>
-
-    <!-- Goal 2: High-Performing Teams -->
-    <div class="gc reveal">
-      <svg class="gc-infographic" viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" height="140">
-        <defs>
-          <linearGradient id="g2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d3060"/><stop offset="100%" stop-color="#1a4a8a"/></linearGradient>
-        </defs>
-        <rect width="340" height="140" fill="url(#g2bg)"/>
-        <pattern id="g2dot" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.05)"/></pattern>
-        <rect width="340" height="140" fill="url(#g2dot)"/>
-        <text x="170" y="20" font-family="Outfit,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1.5">TEAM PERFORMANCE MODEL</text>
-        <!-- center leader node -->
-        <circle cx="170" cy="75" r="22" fill="rgba(45,110,214,0.35)" stroke="#2d6ed6" stroke-width="1.5"/>
-        <circle cx="170" cy="68" r="8" fill="#2d6ed6"/>
-        <path d="M154 88 C154 78 186 78 186 88" fill="#2d6ed6"/>
-        <text x="170" y="100" font-family="Outfit,sans-serif" font-size="7.5" fill="#f5c842" text-anchor="middle" font-weight="700">LEADER</text>
-        <!-- satellite nodes -->
-        <!-- L1 -->
-        <circle cx="72" cy="45" r="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <circle cx="72" cy="40" r="6" fill="rgba(255,255,255,0.4)"/>
-        <path d="M62 54 C62 48 82 48 82 54" fill="rgba(255,255,255,0.3)"/>
-        <text x="72" y="62" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.6)" text-anchor="middle">L1 Support</text>
-        <line x1="88" y1="50" x2="149" y2="65" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- L2 -->
-        <circle cx="268" cy="45" r="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <circle cx="268" cy="40" r="6" fill="rgba(255,255,255,0.4)"/>
-        <path d="M258 54 C258 48 278 48 278 54" fill="rgba(255,255,255,0.3)"/>
-        <text x="268" y="62" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.6)" text-anchor="middle">L2 Tech</text>
-        <line x1="252" y1="50" x2="191" y2="65" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- L3 -->
-        <circle cx="72" cy="112" r="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <circle cx="72" cy="107" r="6" fill="rgba(255,255,255,0.4)"/>
-        <path d="M62 120 C62 115 82 115 82 120" fill="rgba(255,255,255,0.3)"/>
-        <text x="72" y="128" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.6)" text-anchor="middle">Specialist</text>
-        <line x1="88" y1="112" x2="149" y2="86" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- L4 -->
-        <circle cx="268" cy="112" r="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <circle cx="268" cy="107" r="6" fill="rgba(255,255,255,0.4)"/>
-        <path d="M258 120 C258 115 278 115 278 120" fill="rgba(255,255,255,0.3)"/>
-        <text x="268" y="128" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.6)" text-anchor="middle">Engineer</text>
-        <line x1="252" y1="112" x2="191" y2="86" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-        <!-- star badge -->
-        <rect x="148" y="112" width="44" height="16" rx="8" fill="rgba(245,200,66,0.2)" stroke="rgba(245,200,66,0.4)" stroke-width="1"/>
-        <text x="170" y="123" font-family="Outfit,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" font-weight="700">★ High Perf</text>
-      </svg>
-      <div class="gc-body">
-        <h3>Build High-Performing Teams</h3>
-        <p>Develop and mentor IT teams to deliver exceptional service quality and achieve operational excellence.</p>
-      </div>
-    </div>
-
-    <!-- Goal 3: Optimize IT Operations -->
-    <div class="gc reveal">
-      <svg class="gc-infographic" viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" height="140">
-        <defs>
-          <linearGradient id="g3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a1f3d"/><stop offset="100%" stop-color="#1a3660"/></linearGradient>
-          <linearGradient id="g3arc" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2d6ed6"/><stop offset="100%" stop-color="#4ade80"/></linearGradient>
-        </defs>
-        <rect width="340" height="140" fill="url(#g3bg)"/>
-        <pattern id="g3dot" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.05)"/></pattern>
-        <rect width="340" height="140" fill="url(#g3dot)"/>
-        <text x="170" y="18" font-family="Outfit,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1.5">IT OPERATIONS EFFICIENCY</text>
-        <!-- left: SLA gauge -->
-        <text x="78" y="38" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle">SLA Score</text>
-        <path d="M30 95 A48 48 0 0 1 126 95" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10" stroke-linecap="round"/>
-        <path d="M30 95 A48 48 0 0 1 126 95" fill="none" stroke="url(#g3arc)" stroke-width="10" stroke-linecap="round" stroke-dasharray="138 151" opacity="0.9"/>
-        <text x="78" y="88" font-family="Outfit,sans-serif" font-size="20" font-weight="800" fill="white" text-anchor="middle">100%</text>
-        <text x="78" y="101" font-family="Outfit,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.45)" text-anchor="middle">SLA Achieved</text>
-        <!-- divider -->
-        <line x1="160" y1="28" x2="160" y2="128" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-        <!-- right: metric bars -->
-        <text x="255" y="38" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle">Key Metrics</text>
-        <!-- Cost -->
-        <text x="172" y="58" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Cost Reduction</text>
-        <rect x="172" y="62" width="148" height="7" rx="3.5" fill="rgba(255,255,255,0.08)"/>
-        <rect x="172" y="62" width="100" height="7" rx="3.5" fill="#2d6ed6"/>
-        <text x="324" y="69" font-family="Outfit,sans-serif" font-size="7.5" fill="#2d6ed6" text-anchor="end" font-weight="700">30%↓</text>
-        <!-- Downtime -->
-        <text x="172" y="84" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Downtime</text>
-        <rect x="172" y="88" width="148" height="7" rx="3.5" fill="rgba(255,255,255,0.08)"/>
-        <rect x="172" y="88" width="44" height="7" rx="3.5" fill="#4ade80"/>
-        <text x="324" y="95" font-family="Outfit,sans-serif" font-size="7.5" fill="#4ade80" text-anchor="end" font-weight="700">0.5%</text>
-        <!-- Resolution -->
-        <text x="172" y="110" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Resolution Rate</text>
-        <rect x="172" y="114" width="148" height="7" rx="3.5" fill="rgba(255,255,255,0.08)"/>
-        <rect x="172" y="114" width="140" height="7" rx="3.5" fill="#f5c842"/>
-        <text x="324" y="121" font-family="Outfit,sans-serif" font-size="7.5" fill="#f5c842" text-anchor="end" font-weight="700">95%</text>
-      </svg>
-      <div class="gc-body">
-        <h3>Optimize IT Operations</h3>
-        <p>Streamline IT processes and reduce costs while maintaining security, compliance, and service reliability.</p>
-      </div>
-    </div>
-
-    <!-- Goal 4: Enable Business Growth -->
-    <div class="gc reveal">
-      <svg class="gc-infographic" viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg" height="140">
-        <defs>
-          <linearGradient id="g4bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0c2040"/><stop offset="100%" stop-color="#1a3a6e"/></linearGradient>
-          <linearGradient id="g4b1" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#2d6ed6" stop-opacity="0.2"/><stop offset="100%" stop-color="#2d6ed6" stop-opacity="0.7"/></linearGradient>
-          <linearGradient id="g4b2" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#f5c842" stop-opacity="0.2"/><stop offset="100%" stop-color="#f5c842" stop-opacity="0.9"/></linearGradient>
-          <linearGradient id="g4b3" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#4ade80" stop-opacity="0.2"/><stop offset="100%" stop-color="#4ade80"/></linearGradient>
-        </defs>
-        <rect width="340" height="140" fill="url(#g4bg)"/>
-        <pattern id="g4dot" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.05)"/></pattern>
-        <rect width="340" height="140" fill="url(#g4dot)"/>
-        <text x="170" y="18" font-family="Outfit,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1.5">BUSINESS GROWTH INDICATORS</text>
-        <!-- grid -->
-        <line x1="30" y1="110" x2="310" y2="110" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-        <line x1="30" y1="85"  x2="310" y2="85"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
-        <line x1="30" y1="60"  x2="310" y2="60"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
-        <line x1="30" y1="35"  x2="310" y2="35"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
-        <!-- grouped bars: 4 quarters, 3 metrics each -->
-        <!-- Q1 -->
-        <rect x="36"  y="85" width="14" height="25" rx="3" fill="url(#g4b1)"/>
-        <rect x="52"  y="92" width="14" height="18" rx="3" fill="url(#g4b2)"/>
-        <rect x="68"  y="88" width="14" height="22" rx="3" fill="url(#g4b3)"/>
-        <text x="62"  y="122" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Q1</text>
-        <!-- Q2 -->
-        <rect x="104" y="72" width="14" height="38" rx="3" fill="url(#g4b1)"/>
-        <rect x="120" y="78" width="14" height="32" rx="3" fill="url(#g4b2)"/>
-        <rect x="136" y="70" width="14" height="40" rx="3" fill="url(#g4b3)"/>
-        <text x="128" y="122" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Q2</text>
-        <!-- Q3 -->
-        <rect x="172" y="55" width="14" height="55" rx="3" fill="url(#g4b1)"/>
-        <rect x="188" y="60" width="14" height="50" rx="3" fill="url(#g4b2)"/>
-        <rect x="204" y="50" width="14" height="60" rx="3" fill="url(#g4b3)"/>
-        <text x="196" y="122" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Q3</text>
-        <!-- Q4 -->
-        <rect x="240" y="36" width="14" height="74" rx="3" fill="url(#g4b1)"/>
-        <rect x="256" y="40" width="14" height="70" rx="3" fill="url(#g4b2)"/>
-        <rect x="272" y="32" width="14" height="78" rx="3" fill="url(#g4b3)"/>
-        <text x="264" y="122" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Q4</text>
-        <!-- trend arrow -->
-        <polyline points="30,106 96,88 164,72 230,50" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="5 3"/>
-        <polygon points="234,44 242,54 228,54" fill="rgba(255,255,255,0.4)"/>
-        <!-- legend -->
-        <rect x="30" y="128" width="8" height="5" rx="1" fill="#2d6ed6"/>
-        <text x="42" y="133" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.4)">Revenue</text>
-        <rect x="100" y="128" width="8" height="5" rx="1" fill="#f5c842"/>
-        <text x="112" y="133" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.4)">Efficiency</text>
-        <rect x="174" y="128" width="8" height="5" rx="1" fill="#4ade80"/>
-        <text x="186" y="133" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.4)">Growth</text>
-      </svg>
-      <div class="gc-body">
-        <h3>Enable Business Growth</h3>
-        <p>Align IT strategy with business objectives to support sustainable growth and market expansion.</p>
-      </div>
-    </div>
-
-    <!-- Goal 5: AI & Automation -->
-    <div class="gc full reveal">
-      <svg class="gc-infographic" viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg" height="140">
-        <defs>
-          <linearGradient id="g5bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a0d2e"/><stop offset="50%" stop-color="#1a2545"/><stop offset="100%" stop-color="#0f3060"/></linearGradient>
-          <linearGradient id="g5glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient>
-        </defs>
-        <rect width="680" height="140" fill="url(#g5bg)"/>
-        <pattern id="g5dot" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.04)"/></pattern>
-        <rect width="680" height="140" fill="url(#g5dot)"/>
-        <text x="340" y="18" font-family="Outfit,sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1.5">AI &amp; AUTOMATION WORKFLOW</text>
-
-        <!-- pipeline nodes -->
-        <!-- Node 1: Input -->
-        <rect x="30" y="46" width="90" height="50" rx="10" fill="rgba(124,58,237,0.2)" stroke="rgba(192,132,252,0.4)" stroke-width="1.5"/>
-        <text x="75" y="68" font-family="Outfit,sans-serif" font-size="20" text-anchor="middle">📥</text>
-        <text x="75" y="86" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-weight="600">Data Input</text>
-        <!-- arrow -->
-        <line x1="122" y1="71" x2="148" y2="71" stroke="rgba(192,132,252,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <polygon points="150,71 144,67 144,75" fill="rgba(192,132,252,0.6)"/>
-
-        <!-- Node 2: AI Brain -->
-        <rect x="152" y="36" width="110" height="68" rx="10" fill="rgba(124,58,237,0.35)" stroke="#c084fc" stroke-width="1.5"/>
-        <text x="207" y="63" font-family="Outfit,sans-serif" font-size="26" text-anchor="middle">🤖</text>
-        <text x="207" y="83" font-family="Outfit,sans-serif" font-size="8.5" fill="#c084fc" text-anchor="middle" font-weight="700">AI Processing</text>
-        <text x="207" y="95" font-family="Outfit,sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" text-anchor="middle">ML · NLP · Analytics</text>
-        <!-- pulse rings -->
-        <circle cx="207" cy="63" r="40" fill="none" stroke="rgba(192,132,252,0.1)" stroke-width="1"/>
-        <circle cx="207" cy="63" r="55" fill="none" stroke="rgba(192,132,252,0.06)" stroke-width="1"/>
-        <!-- arrow -->
-        <line x1="264" y1="71" x2="290" y2="71" stroke="rgba(192,132,252,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <polygon points="292,71 286,67 286,75" fill="rgba(192,132,252,0.6)"/>
-
-        <!-- Node 3: Automation -->
-        <rect x="294" y="46" width="90" height="50" rx="10" fill="rgba(45,110,214,0.2)" stroke="rgba(45,110,214,0.4)" stroke-width="1.5"/>
-        <text x="339" y="68" font-family="Outfit,sans-serif" font-size="20" text-anchor="middle">⚙️</text>
-        <text x="339" y="86" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-weight="600">Automate</text>
-        <!-- arrow -->
-        <line x1="386" y1="71" x2="412" y2="71" stroke="rgba(45,110,214,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <polygon points="414,71 408,67 408,75" fill="rgba(45,110,214,0.6)"/>
-
-        <!-- Node 4: Insights -->
-        <rect x="416" y="46" width="90" height="50" rx="10" fill="rgba(245,200,66,0.15)" stroke="rgba(245,200,66,0.4)" stroke-width="1.5"/>
-        <text x="461" y="68" font-family="Outfit,sans-serif" font-size="20" text-anchor="middle">📊</text>
-        <text x="461" y="86" font-family="Outfit,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-weight="600">Insights</text>
-        <!-- arrow -->
-        <line x1="508" y1="71" x2="534" y2="71" stroke="rgba(245,200,66,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <polygon points="536,71 530,67 530,75" fill="rgba(245,200,66,0.6)"/>
-
-        <!-- Node 5: Results -->
-        <rect x="538" y="46" width="110" height="50" rx="10" fill="rgba(74,222,128,0.15)" stroke="rgba(74,222,128,0.4)" stroke-width="1.5"/>
-        <text x="593" y="68" font-family="Outfit,sans-serif" font-size="20" text-anchor="middle">🚀</text>
-        <text x="593" y="86" font-family="Outfit,sans-serif" font-size="8" fill="#4ade80" text-anchor="middle" font-weight="700">Outcomes</text>
-
-        <!-- bottom stats -->
-        <rect x="30"  y="110" width="120" height="20" rx="10" fill="rgba(192,132,252,0.12)" stroke="rgba(192,132,252,0.3)" stroke-width="1"/>
-        <text x="90"  y="123" font-family="Outfit,sans-serif" font-size="8" fill="#c084fc" text-anchor="middle" font-weight="600">↓ 60% Manual Tasks</text>
-        <rect x="170" y="110" width="120" height="20" rx="10" fill="rgba(45,110,214,0.12)" stroke="rgba(45,110,214,0.3)" stroke-width="1"/>
-        <text x="230" y="123" font-family="Outfit,sans-serif" font-size="8" fill="#93c5fd" text-anchor="middle" font-weight="600">↑ 3× Faster Decisions</text>
-        <rect x="310" y="110" width="120" height="20" rx="10" fill="rgba(245,200,66,0.12)" stroke="rgba(245,200,66,0.3)" stroke-width="1"/>
-        <text x="370" y="123" font-family="Outfit,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" font-weight="600">↑ 40% Productivity</text>
-        <rect x="450" y="110" width="120" height="20" rx="10" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.3)" stroke-width="1"/>
-        <text x="510" y="123" font-family="Outfit,sans-serif" font-size="8" fill="#4ade80" text-anchor="middle" font-weight="600">↓ 30% IT Costs</text>
-      </svg>
-      <div class="gc-body">
-        <h3>Leverage AI &amp; Automation</h3>
-        <p>Integrate artificial intelligence and automation technologies to enhance efficiency, reduce manual processes, and drive intelligent decision-making.</p>
-      </div>
-    </div>
-
+    <div class="gc reveal"><div class="gc-icon">🚀</div><div><h3>Drive Digital Transformation</h3><p>Enable organizations to modernize their IT infrastructure and adopt emerging technologies for competitive advantage.</p></div></div>
+    <div class="gc reveal"><div class="gc-icon">👥</div><div><h3>Build High-Performing Teams</h3><p>Develop and mentor IT teams to deliver exceptional service quality and achieve operational excellence.</p></div></div>
+    <div class="gc reveal"><div class="gc-icon">⚙️</div><div><h3>Optimize IT Operations</h3><p>Streamline IT processes and reduce costs while maintaining security, compliance, and service reliability.</p></div></div>
+    <div class="gc reveal"><div class="gc-icon">📈</div><div><h3>Enable Business Growth</h3><p>Align IT strategy with business objectives to support sustainable growth and market expansion.</p></div></div>
+    <div class="gc full reveal"><div class="gc-icon">🤖</div><div><h3>Leverage AI &amp; Automation</h3><p>Integrate artificial intelligence and automation technologies to enhance efficiency, reduce manual processes, and drive intelligent decision-making.</p></div></div>
   </div>
 </section>
 
@@ -1012,7 +761,26 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
 </section>
 
 <!-- EXPERIENCE -->
-
+<section id="experience">
+  <div class="exp-wrap">
+    <div class="exp-left reveal">
+      <p class="sl">Track Record</p>
+      <h2 class="st">Professional Journey</h2>
+      <p class="sd">15+ years of progressive experience in IT management and operations across diverse industries.</p>
+    </div>
+    <div class="tl reveal">
+      <div class="ti"><div class="td"></div><div class="tr">IT Asset Manager</div><ul class="tb"><li>Managed 1,000+ IT assets</li><li>Designed SharePoint + Power Apps tracking system</li><li>Optimized procurement and cost savings</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">MIS Manager</div><ul class="tb"><li>Led digital transformation initiatives</li><li>Oversaw multi-location MIS operations</li><li>Developed IT policies and SOPs</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Service Delivery Manager</div><ul class="tb"><li>Managed L1/L2 support teams</li><li>Achieved SLA targets</li><li>Developed team capabilities</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Service Delivery Manager</div><ul class="tb"><li>Managed technical support teams</li><li>Improved service delivery maturity</li><li>Led knowledge transfer initiatives</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">IT Manager</div><ul class="tb"><li>Managed IT operations and budgeting</li><li>Administered G-Suite and Fortinet security</li><li>Led data governance initiatives</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">IT Supervisor</div><ul class="tb"><li>Managed POS systems for multiple locations</li><li>Coordinated vendor relationships</li><li>Provided IT support to store operations</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">IT Engineer</div><ul class="tb"><li>Provided infrastructure support</li><li>Managed vendor coordination</li><li>Performed system maintenance</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Jr. System / Network Administrator</div><ul class="tb"><li>Managed servers and data center operations</li><li>Supported 100+ employees</li><li>Installed and configured systems</li></ul></div>
+      <div class="ti"><div class="td"></div><div class="tr">Technical Support L3 &amp; L2</div><ul class="tb"><li>Delivered enterprise-level technical support</li><li>Resolved escalated IT issues</li><li>Supported corporate clients</li></ul></div>
+    </div>
+  </div>
+</section>
 
 <!-- COMPETENCIES -->
 <section id="competencies">
@@ -1025,14 +793,12 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
       <div class="comp-g-title">Technical Expertise</div>
       <div class="comp-tags">
         <span class="ctag">ITIL Framework</span>
-        <span class="ctag">Axelos Framework</span>
         <span class="ctag">Microsoft 365</span>
         <span class="ctag">SharePoint &amp; Power Apps</span>
-        <span class="ctag">Power BI</span>
+        <span class="ctag">Power BI &amp; Tableau</span>
         <span class="ctag">Cloud Platforms</span>
         <span class="ctag">Network Technologies</span>
         <span class="ctag">ISO 27001</span>
-        <span class="ctag">ISO/IEC 42001</span>
         <span class="ctag">Lean Six Sigma</span>
       </div>
     </div>
@@ -1047,24 +813,26 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
         <span class="ctag">Incident Management</span>
         <span class="ctag">Digital Transformation</span>
         <span class="ctag">IT Governance</span>
-        <span class="ctag">Client Management</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-
-
 <section id="contact">
   <div class="ct-layout">
     <div class="reveal">
       <p class="sl">Get In Touch</p>
       <h2 class="st">Ready to Transform Your IT Operations?</h2>
       <p class="sd" style="margin-bottom:28px;">Let's discuss how Salvation Solutions can help optimize your IT infrastructure and drive business growth.</p>
+      <div class="ct-actions">
+        <button class="btn-cp" onclick="document.querySelector('.fbox').scrollIntoView({behavior:'smooth'})">Schedule a Call</button>
+        <a href="mailto:salvationsolutions@zohomail.com" class="btn-co" id="email-btn">Send an Email</a>
+      </div>
       <div class="ct-items">
         <div class="ct-item"><div class="ct-icon">📞</div><div><div class="ct-lbl">Phone</div><div class="ct-val"><a href="tel:+639173291684">+639173291684</a></div></div></div>
-        <div class="ct-item"><div class="ct-icon">📍</div><div><div class="ct-lbl">Location</div><div class="ct-val">Metro Manila, Philippines</div></div></div>
+        <div class="ct-item"><div class="ct-icon">✉️</div><div><div class="ct-lbl">Email</div><div class="ct-val"><a href="mailto:salvationsolutions@zohomail.com" id="email-link">salvationsolutions@zohomail.com</a></div></div></div>
+        <div class="ct-item"><div class="ct-icon">📍</div><div><div class="ct-lbl">Location</div><div class="ct-val">Quezon City, Philippines</div></div></div>
       </div>
     </div>
     <div class="reveal">
@@ -1072,7 +840,9 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
         <div class="ftitle">Schedule a Consultation</div>
         <div class="fsub">Fill out the form and I'll get back to you within 24 hours.</div>
         <div id="form-inner">
-          <input type="hidden" id="formspree-endpoint" value="https://formsubmit.co/ajax/YOUR@EMAIL.COM"/>
+          <!-- ⚠️ SETUP: Replace the value below with your Formspree endpoint -->
+          <!-- Get it free at https://formspree.io → New Form → copy the URL -->
+          <input type="hidden" id="formspree-endpoint" value="https://formspree.io/f/xzdonayl"/>
           <div class="fr2">
             <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" placeholder="Juan dela Cruz" required/></div>
             <div class="fg"><label for="fc">Company</label><input type="text" id="fc" placeholder="Your Company"/></div>
@@ -1091,6 +861,7 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
             </select>
           </div>
           <div class="fg"><label for="fm">Message</label><textarea id="fm" placeholder="Tell me about your IT challenges or goals..."></textarea></div>
+          <!-- error message -->
           <div id="form-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;color:#b91c1c;"></div>
           <button class="btn-fs" id="submit-btn" onclick="handleSubmit()">Send Message</button>
           <p class="fnote">✦ You'll receive a confirmation email after submitting</p>
@@ -1100,24 +871,13 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
           <h4>Message Sent!</h4>
           <p style="margin-bottom:8px">A confirmation has been sent to your email.</p>
           <p>I'll get back to you within 24 hours on business days.</p>
+          <a href="https://wa.me/639173291684" target="_blank"
+             style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#25d366;color:white;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">
+            <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="clients">
-  <div class="reveal">
-    <p class="sl">Who We Serve</p>
-    <h2 class="st">Our Clients</h2>
-    <p class="sd">Trusted by enterprises and small businesses across diverse industries in the Philippines and beyond.</p>
-    <div class="clients-grid">
-      <div class="client-card"><div class="client-icon">🏦</div><div class="client-name">Financial Services</div><div class="client-industry">Banking &amp; Finance</div></div>
-      <div class="client-card"><div class="client-icon">🍽️</div><div class="client-name">Food &amp; Beverage</div><div class="client-industry">Restaurant &amp; Retail</div></div>
-      <div class="client-card"><div class="client-icon">🏥</div><div class="client-name">Healthcare</div><div class="client-industry">Medical &amp; Wellness</div></div>
-      <div class="client-card"><div class="client-icon">🏗️</div><div class="client-name">Construction</div><div class="client-industry">Engineering &amp; Infrastructure</div></div>
-      <div class="client-card"><div class="client-icon">🛒</div><div class="client-name">Retail &amp; E-Commerce</div><div class="client-industry">Consumer &amp; Trade</div></div>
-      <div class="client-card"><div class="client-icon">🏢</div><div class="client-name">Corporate SMEs</div><div class="client-industry">Small &amp; Medium Enterprises</div></div>
     </div>
   </div>
 </section>
@@ -1126,7 +886,7 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
 <footer>
   <span class="fbrand">Salvation Solutions</span>
   <p>© 2026 SALVATION SOLUTIONS. All rights reserved.</p>
-  <p>Metro Manila, Philippines</p>
+  <p>Quezon City, Philippines</p>
 </footer>
 
 <script>
@@ -1149,27 +909,63 @@ const ro = new IntersectionObserver((entries) => {
 }, { threshold: 0.07 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-
-
-
-// Form submit
+// Form submit → Formspree
 async function handleSubmit() {
-  const btn = document.getElementById('submit-btn');
-  const errEl = document.getElementById('form-error');
-  errEl.style.display = 'none';
-  const fn = document.getElementById('fn').value.trim();
-  const fe = document.getElementById('fe').value.trim();
-  const fp = document.getElementById('fp').value.trim();
-  if (!fn || !fe || !fp) { errEl.textContent = 'Please fill in all required fields.'; errEl.style.display = 'block'; return; }
-  btn.disabled = true; btn.textContent = 'Sending...';
+  const n  = document.getElementById('fn').value.trim();
+  const c  = document.getElementById('fc').value.trim();
+  const e  = document.getElementById('fe').value.trim();
+  const p  = document.getElementById('fp').value.trim();
+  const s  = document.getElementById('fs').value;
+  const m  = document.getElementById('fm').value.trim();
+  const ep = document.getElementById('formspree-endpoint').value;
+  const errBox = document.getElementById('form-error');
+  const btn    = document.getElementById('submit-btn');
+
+  // Basic validation
+  errBox.style.display = 'none';
+  if (!n) { showErr('Please enter your full name.'); return; }
+  if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { showErr('Please enter a valid email address.'); return; }
+  if (!p) { showErr('Please enter your phone number.'); return; }
+  if (ep.includes('YOUR_FORM_ID')) {
+    showErr('⚠️ Please replace YOUR_FORM_ID in the HTML with your actual Formspree endpoint from formspree.io');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
   try {
-    const endpoint = document.getElementById('formspree-endpoint').value;
-    const res = await fetch(endpoint, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({name:fn,email:fe,phone:fp,company:document.getElementById('fc').value,service:document.getElementById('fs').value,message:document.getElementById('fm').value}) });
-    if (res.ok) { document.getElementById('form-inner').style.display='none'; document.getElementById('fok').classList.add('show'); }
-    else { throw new Error('Failed'); }
-  } catch(e) { errEl.textContent = 'Something went wrong. Please try again or contact directly.'; errEl.style.display='block'; btn.disabled=false; btn.textContent='Send Message'; }
+    const res = await fetch(ep, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: n, company: c, email: e, phone: p,
+        service: s || 'Not specified', message: m || '(no message)',
+        _replyto: e,
+        _subject: 'Consultation Request – ' + n
+      })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      document.getElementById('form-inner').style.display = 'none';
+      document.getElementById('fok').classList.add('show');
+    } else {
+      showErr(data.error || 'Submission failed. Please try again or message via WhatsApp.');
+      btn.disabled = false; btn.textContent = 'Send Message';
+    }
+  } catch (err) {
+    showErr('Network error. Please check your connection and try again.');
+    btn.disabled = false; btn.textContent = 'Send Message';
+  }
+
+  function showErr(msg) { errBox.textContent = msg; errBox.style.display = 'block'; errBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
 }
 
+// Download placeholder
+document.getElementById('dl-profile').addEventListener('click', e => {
+  e.preventDefault();
+  alert('Profile document coming soon. Please reach out via the contact form.');
+});
 </script>
 </body>
 </html>
