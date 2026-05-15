@@ -359,6 +359,7 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="#goals">Goals</a></li>
     <li><a href="#projects">Projects</a></li>
   </ul>
@@ -1042,6 +1043,59 @@ footer p { font-size: 13px; color: rgba(255,255,255,0.38); }
 <!-- CONTACT -->
 
 
+<section id="contact">
+  <div class="ct-layout">
+    <div class="reveal">
+      <p class="sl">Get In Touch</p>
+      <h2 class="st">Ready to Transform Your IT Operations?</h2>
+      <p class="sd" style="margin-bottom:28px;">Let's discuss how Salvation Solutions can help optimize your IT infrastructure and drive business growth.</p>
+      <div class="ct-actions">
+        <button class="btn-cp" onclick="document.querySelector('.fbox').scrollIntoView({behavior:'smooth'})">Schedule a Call</button>
+      </div>
+      <div class="ct-items">
+        <div class="ct-item"><div class="ct-icon">📞</div><div><div class="ct-lbl">Phone</div><div class="ct-val"><a href="tel:+639173291684">+639173291684</a></div></div></div>
+        <div class="ct-item"><div class="ct-icon">📍</div><div><div class="ct-lbl">Location</div><div class="ct-val">Metro Manila, Philippines</div></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="fbox">
+        <div class="ftitle">Schedule a Consultation</div>
+        <div class="fsub">Fill out the form and I'll get back to you within 24 hours.</div>
+        <div id="form-inner">
+          <input type="hidden" id="formspree-endpoint" value="https://formsubmit.co/ajax/YOUR@EMAIL.COM"/>
+          <div class="fr2">
+            <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" placeholder="Juan dela Cruz" required/></div>
+            <div class="fg"><label for="fc">Company</label><input type="text" id="fc" placeholder="Your Company"/></div>
+          </div>
+          <div class="fg"><label for="fe">Email Address *</label><input type="email" id="fe" placeholder="juan@company.com" required/></div>
+          <div class="fg"><label for="fp">Phone / WhatsApp *</label><input type="tel" id="fp" placeholder="+63 9XX XXX XXXX" required/></div>
+          <div class="fg">
+            <label for="fs">Service Interest</label>
+            <select id="fs">
+              <option value="" disabled selected>Select a service...</option>
+              <option>IT Asset Management</option>
+              <option>Service Delivery Excellence</option>
+              <option>MIS Strategy &amp; Digital Transformation</option>
+              <option>Food &amp; Beverages IT Solutions</option>
+              <option>General IT Consulting</option>
+            </select>
+          </div>
+          <div class="fg"><label for="fm">Message</label><textarea id="fm" placeholder="Tell me about your IT challenges or goals..."></textarea></div>
+          <div id="form-error" style="display:none;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;color:#b91c1c;"></div>
+          <button class="btn-fs" id="submit-btn" onclick="handleSubmit()">Send Message</button>
+          <p class="fnote">✦ You'll receive a confirmation email after submitting</p>
+        </div>
+        <div class="fok" id="fok">
+          <div style="font-size:36px;margin-bottom:12px">✅</div>
+          <h4>Message Sent!</h4>
+          <p style="margin-bottom:8px">A confirmation has been sent to your email.</p>
+          <p>I'll get back to you within 24 hours on business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <span class="fbrand">Salvation Solutions</span>
@@ -1070,6 +1124,25 @@ const ro = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 
+
+
+// Form submit
+async function handleSubmit() {
+  const btn = document.getElementById('submit-btn');
+  const errEl = document.getElementById('form-error');
+  errEl.style.display = 'none';
+  const fn = document.getElementById('fn').value.trim();
+  const fe = document.getElementById('fe').value.trim();
+  const fp = document.getElementById('fp').value.trim();
+  if (!fn || !fe || !fp) { errEl.textContent = 'Please fill in all required fields.'; errEl.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = 'Sending...';
+  try {
+    const endpoint = document.getElementById('formspree-endpoint').value;
+    const res = await fetch(endpoint, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({name:fn,email:fe,phone:fp,company:document.getElementById('fc').value,service:document.getElementById('fs').value,message:document.getElementById('fm').value}) });
+    if (res.ok) { document.getElementById('form-inner').style.display='none'; document.getElementById('fok').classList.add('show'); }
+    else { throw new Error('Failed'); }
+  } catch(e) { errEl.textContent = 'Something went wrong. Please try again or contact directly.'; errEl.style.display='block'; btn.disabled=false; btn.textContent='Send Message'; }
+}
 
 </script>
 </body>
