@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('C6cmf5kSENMKdP-sI');</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -1202,14 +1204,36 @@ async function handleSubmit() {
   const fn = document.getElementById('fn').value.trim();
   const fe = document.getElementById('fe').value.trim();
   const fp = document.getElementById('fp').value.trim();
+  const fc = document.getElementById('fc').value.trim();
+  const fs = document.getElementById('fs').value.trim();
+  const fm = document.getElementById('fm').value.trim();
   if (!fn || !fe || !fp) { errEl.textContent = 'Please fill in all required fields.'; errEl.style.display = 'block'; return; }
   btn.disabled = true; btn.textContent = 'Sending...';
   try {
+    // 1) Notify owner via Formspree
     const endpoint = document.getElementById('formspree-endpoint').value;
-    const res = await fetch(endpoint, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({name:fn,email:fe,_replyto:fe,phone:selectedCode + ' ' + fp,company:document.getElementById('fc').value,service:document.getElementById('fs').value,message:document.getElementById('fm').value,'_subject':'New Consultation Request from ' + fn}) });
-    if (res.ok) { document.getElementById('form-inner').style.display='none'; document.getElementById('fok').classList.add('show'); }
-    else { throw new Error('Failed'); }
-  } catch(e) { errEl.textContent = 'Something went wrong. Please try again or contact directly.'; errEl.style.display='block'; btn.disabled=false; btn.textContent='Send Message'; }
+    const res = await fetch(endpoint, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({name:fn,email:fe,_replyto:fe,phone:selectedCode+' '+fp,company:fc,service:fs,message:fm,'_subject':'New Consultation Request from '+fn}) });
+    if (!res.ok) throw new Error('Formspree failed');
+
+    // 2) Send confirmation email to user via EmailJS
+    await emailjs.send('6xGw7s6nl2CHksauId_ll', 'template_rjhl74m', {
+      from_name: fn,
+      to_email:  fe,
+      company:   fc || 'N/A',
+      service:   fs || 'General IT Consulting',
+      message:   fm || 'No message provided',
+      phone:     selectedCode + ' ' + fp,
+    });
+
+    // 3) Show success
+    document.getElementById('form-inner').style.display = 'none';
+    document.getElementById('fok').classList.add('show');
+  } catch(e) {
+    errEl.textContent = 'Something went wrong. Please try again or contact directly.';
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  }
 }
 
 
