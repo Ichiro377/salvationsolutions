@@ -1210,26 +1210,28 @@ async function handleSubmit() {
   if (!fn || !fe || !fp) { errEl.textContent = 'Please fill in all required fields.'; errEl.style.display = 'block'; return; }
   btn.disabled = true; btn.textContent = 'Sending...';
   try {
-    // 1) Notify owner via Formspree
-    const endpoint = document.getElementById('formspree-endpoint').value;
-    const res = await fetch(endpoint, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({name:fn,email:fe,_replyto:fe,phone:selectedCode+' '+fp,company:fc,service:fs,message:fm,'_subject':'New Consultation Request from '+fn}) });
-    if (!res.ok) throw new Error('Formspree failed');
+    // Send confirmation email to user via EmailJS
+    try {
+      await emailjs.send('service_su5thso', 'template_rjhl74m', {
+        from_name: fn,
+        to_email:  fe,
+        company:   fc || 'N/A',
+        service:   fs || 'General IT Consulting',
+        message:   fm || 'No message provided',
+        phone:     selectedCode + ' ' + fp,
+      });
+    } catch(e) {
+      errEl.textContent = '❌ EmailJS error: ' + (e.text || e.message || JSON.stringify(e));
+      errEl.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Send Message';
+      return;
+    }
 
-    // 2) Send confirmation email to user via EmailJS
-    await emailjs.send('service_su5thso', 'template_rjhl74m', {
-      from_name: fn,
-      to_email:  fe,
-      company:   fc || 'N/A',
-      service:   fs || 'General IT Consulting',
-      message:   fm || 'No message provided',
-      phone:     selectedCode + ' ' + fp,
-    });
-
-    // 3) Show success
+    // Show success
     document.getElementById('form-inner').style.display = 'none';
     document.getElementById('fok').classList.add('show');
   } catch(e) {
-    errEl.textContent = 'Something went wrong. Please try again or contact directly.';
+    errEl.textContent = '❌ Unexpected error: ' + e.message;
     errEl.style.display = 'block';
     btn.disabled = false;
     btn.textContent = 'Send Message';
