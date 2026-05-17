@@ -1216,7 +1216,7 @@ async function handleSubmit() {
     if (!res.ok) throw new Error('Formspree failed');
 
     // 2) Send confirmation email to user via EmailJS
-    await emailjs.send('6xGw7s6nl2CHksauId_ll', 'template_rjhl74m', {
+    await emailjs.send('service_su5thso', 'template_rjhl74m', {
       from_name: fn,
       to_email:  fe,
       company:   fc || 'N/A',
